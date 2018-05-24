@@ -3,7 +3,7 @@ from discord.ext import commands
 class Public(object):
 
     def __init__(self, bot):
-        self.boat = bot
+        self.bot = bot
 
     @commands.command(description='oof')
     async def oof(self,ctx):

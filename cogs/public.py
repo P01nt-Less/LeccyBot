@@ -1,3 +1,5 @@
+import discord
+from discord.ext import commands
 class Public(object):
 
     def __init__(self, bot):

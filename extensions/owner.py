@@ -1,4 +1,6 @@
 import main
+import discord
+from discord.ext import commands
 
 class Owner():
     def __init__(self, bot):

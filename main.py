@@ -27,6 +27,7 @@ def pointcheck(ctx):
 async def on_ready():
     print('Successful logging in.')
     print('https://discordapp.com/oauth2/authorize?client_id=449301359578316811&scope=bot&permissions=2146958591')
+    bot.load_extension(startup_extensions)
 
 @bot.command()
 async def load(extension_name : str):
@@ -43,13 +44,6 @@ async def unload(extension_name : str):
     """Unloads an extension."""
     bot.unload_extension(extension_name)
     await bot.say("{} unloaded.".format(extension_name))
-if __name__ == "__main__":
-    for extension in startup_extensions:
-        try:
-            bot.load_extension(extension)
-        except Exception as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print('Failed to load extension {}\n{}'.format(extension, exc))
 
 if not os.environ.get('TOKEN'):
     print("No token was found.")

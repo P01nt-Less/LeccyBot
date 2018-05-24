@@ -12,11 +12,14 @@ import json # self-explanatory
 import time # self-explanatory
 import asyncio # tasks
 import os # operating system stuff and also heroku lel
+from os import listdir
+from os.path import isfile, join
 import datetime#self-explanatory
+import logging #logging
 
 description = 'A multi-purpose bot made with Discord.py in the Async library.'
 prefix = '!'
-startup_extensions = 'owner'
+
 
 bot = commands.Bot(command_prefix=prefix,description=description)
 
@@ -27,7 +30,7 @@ def pointcheck(ctx):
 async def on_ready():
     print('Successful logging in.')
     print('https://discordapp.com/oauth2/authorize?client_id=449301359578316811&scope=bot&permissions=2146958591')
-    bot.load_extension(startup_extensions)
+    await LoadCogs()
 
 @bot.command()
 async def load(extension_name : str):
@@ -45,6 +48,20 @@ async def unload(extension_name : str):
     bot.unload_extension(extension_name)
     await bot.say("{} unloaded.".format(extension_name))
 
-if not os.environ.get('TOKEN'):
-    print("No token was found.")
-bot.run(os.environ.get('TOKEN').strip('"'))
+async def LoadCogs():
+    for extension in [f.replace('.py', '') for f in listdir('cogs') if isfile(join('cogs', f))]:
+        try:
+            if not "__init__" in extension:
+                print("Loading {}...".format(extension))
+                bot.load_extension('cogs.' + extension)
+        except Exception as e:
+            print('Failed to load cog {}'.format(extension))
+            traceback.print_exc()
+def Main():
+    logging.basicConfig(level=logging.INFO)
+    if not os.environ.get('TOKEN'):
+        print("No token was found.")
+    bot.run(os.environ.get('TOKEN').strip('"'))
+
+if __name__ == '__main__':
+    Main()

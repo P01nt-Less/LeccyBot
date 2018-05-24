@@ -1,2 +1,2 @@
-discord-rewrite
+discord.py
 aiohttp

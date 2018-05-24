@@ -26,6 +26,7 @@ def pointcheck(ctx):
 @bot.event
 async def on_ready():
     print('Successful logging in.')
+    print('https://discordapp.com/oauth2/authorize?client_id=449301359578316811&scope=bot&permissions=2146958591')
 
 if __name__ == "__main__":
     for extension in startup_extensions:

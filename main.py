@@ -14,7 +14,7 @@ import asyncio # tasks
 import os # operating system stuff and also heroku lel
 import datetime#self-explanatory
 
-description = 'A multi-purpose bot made with Discord.py in the rewrite library.'
+description = 'A multi-purpose bot made with Discord.py in the Async library.'
 prefix = '!'
 startup_extensions = []
 

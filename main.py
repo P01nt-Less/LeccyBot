@@ -16,7 +16,7 @@ import datetime#self-explanatory
 
 description = 'A multi-purpose bot made with Discord.py in the Async library.'
 prefix = '!'
-startup_extensions = ['owner']
+startup_extensions = 'owner'
 
 bot = commands.Bot(command_prefix=prefix,description=description)
 

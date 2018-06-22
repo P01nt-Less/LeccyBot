@@ -32,3 +32,20 @@ async def on_ready():
     while True:
         await bot.change_presence(game=discord.Game(name=random.choice(presence)))
         await asyncio.sleep(5)
+
+@bot.command()
+async def help(ctx, helpc: str = None):
+    '''Test'''
+    if helpc == None:
+        embed=discord.Embed(title='Test', color=0x0000ff)
+        embed.add_field(name='Test', value='Test', inline=False)
+        await ctx.send(embed=embed)
+    if helpc:
+        getcommand = bot.get_command(helpc)
+        await bot.say(f'{helpc}: {getcommand.help}\nUsage: .{getcommand.signature}')
+    elif helpc is None:
+        await bot.say('That command doesn\'t exist.')
+
+if not os.environ.get('TOKEN'):
+    print("No token found!")
+bot.run(os.environ.get('TOKEN').strip('"'))

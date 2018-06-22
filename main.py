@@ -19,10 +19,10 @@ import logging #logging
 
 description = 'A multi-purpose bot made with Discord.py in the Async library.'
 prefix = '.'
-bot.remove_command('help')
 
 
 bot = commands.Bot(command_prefix=prefix,description=description)
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():

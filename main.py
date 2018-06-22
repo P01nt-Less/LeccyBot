@@ -35,7 +35,7 @@ async def on_ready():
         await asyncio.sleep(5)
 
 @bot.command()
-async def help(helpc: str = None,ctx):
+async def help(ctx, helpc):
     '''Test'''
     if helpc == None:
         embed=discord.Embed(title='Test', color=0x0000ff)
